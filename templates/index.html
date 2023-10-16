@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div class="container mt-4">
+        <h1>Welcome to Our Blog</h1>
+        <p>Explore a world of interesting and exciting articles on a variety of topics. Our blog is a hub of knowledge, inspiration, and thought-provoking ideas.</p>
+
+        <h2>Featured Posts</h2>
+        <div class="row">
+            {% for sku, post in posts.items() %}
+                <div class="col-md-3">
+                    <div class="card mb-4" style="width: 20rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post['title'] }}</h5>
+                            <p class="card-text">{{ post['content'] }}</p>
+                            <a href="{{ url_for('view_blog_post', post_sku=sku) }}" class="btn btn-primary">Read More</a>
+                            <p class="author">Author: {{ post['author'] }}</p>
+                            <p class="date">Date: {{ post['date'] }}</p>
+                            <button class="btn btn-success upvote-button" data-post-id="{{ sku }}">Upvote</button>
+                            <span class="like-count" data-post-id="{{ sku }}">0 Likes</span>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

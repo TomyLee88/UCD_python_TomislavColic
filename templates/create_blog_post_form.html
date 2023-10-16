@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="container mt-4">
+    <h2>Create Blog Post</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" name="title" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Content</label>
+            <textarea name="content" class="form-control" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <input type="text" name="author" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" name="date" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select name="category" class="form-select" required>
+                <option value="Life and Nature">Life and Nature</option>
+                <option value="Science">Science</option>
+                <option value="News">News</option>
+                <option value="Sports">Sports</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Create Post</button>
+    </form>
+</div>
+{% endblock %}

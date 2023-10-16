@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block main %}
+    <h1>Posts in Category: {{ category }}</h1>
+    <ul>
+        {% for sku, post in posts.items() %}
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="blog_wrapper">
+              <div class="card" style="width: 18rem;">
+                <p class="author">{{ post['author'] }}</p>
+                <div class="card-body">
+                  <h5 class="card-title">{{ post['title'] }}</h5>
+                  <p class="card-text">{{ post['content'] }}</p>
+                  <a href="{{ url_for('view_blog_post', post_sku=sku) }}" class="btn btn-primary">Read More</a>
+                  <p class="date">{{ post['date'] }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block main %}
+<div class="container mt-4">
+    <h2>Admin Dashboard</h2>
+    <a class="btn btn-primary" href="{{ url_for('create_blog_post_form') }}">Create Blog Post</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post_id, post in blog_posts.items() %}
+            <tr>
+                <td>{{ post['title'] }}</td>
+                <td>{{ post['author'] }}</td>
+                <td>{{ post['date'] }}</td>
+                <td>{{ post['category'] }}</td>
+                <td>
+                    <a href="{{ url_for('delete_blog_post_form', post_id=post_id) }}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
